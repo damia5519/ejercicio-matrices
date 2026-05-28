@@ -40,3 +40,31 @@ void leerCSV(string nombreArchivo, double matriz[empresas][meses]) {
 
     archivo.close();
 }
+
+void calcularTotales(double matriz[empresas][meses], double totales[empresas]) {
+
+    for(int i = 0; i < empresas; i++) {
+
+        totales[i] = 0;
+
+        for(int j = 0; j < meses; j++) {
+
+            totales[i] += matriz[i][j];
+        }
+    }
+}
+
+int main () {
+	double ingresos2023[empresas][meses];
+	double ingresos2024[empresas][meses];
+	double ingresos2025[empresas][meses];
+	
+	leerCSV("input/ingresos-2023.csv", ingresos2023);
+	leerCSV("input/ingresos-2024.csv", ingresos2024);
+	leerCSV("input/ingresos-2025.csv", ingresos2025);
+	
+	double total2023[empresas;]
+	double total2024[empresas;]
+	double total2025[empresas;]
+	
+}
