@@ -48,7 +48,7 @@ void calcularTotales(double matriz[empresas][meses], double totales[empresas]) {
         totales[i] = 0;
 
         for(int j = 0; j < meses; j++) {
-
+        	
             totales[i] += matriz[i][j];
         }
     }
@@ -63,8 +63,47 @@ int main () {
 	leerCSV("input/ingresos-2024.csv", ingresos2024);
 	leerCSV("input/ingresos-2025.csv", ingresos2025);
 	
-	double total2023[empresas;]
-	double total2024[empresas;]
-	double total2025[empresas;]
+	double total2023[empresas];
+	double total2024[empresas];
+	double total2025[empresas];
 	
+	calcularTotales(ingresos2023, total2023);
+	calcularTotales(ingresos2024, total2024);
+	calcularTotales(ingresos2025, total2025);
+	
+	string nombresEmpresas[empresas] = {
+        "Empresa 1",
+        "Empresa 2",
+        "Empresa 3",
+        "Empresa 4",
+        "Empresa 5"
+    };
+	
+	ofstream salida("output/resultados.txt");
+	
+	if(!salida.is_open()) {
+		cout<<" Error al crear el archivo de salida";
+		return 1;
+	}
+	
+	for(int i = 0; i < empresas; i++) {
+		
+		double totalGeneral =
+		total2023[i] +
+		total2024[i] +
+		total2025[i];
+		
+		salida << nombresEmpresas[i] <<endl;
+		salida << "Total 2023: " << total2023[i] << endl;
+		salida << "Total 2024: " << total2024[i] << endl;
+		salida << "Total 2025: " << total2025[i] << endl;
+		salida << "Total 3 años: " << totalGeneral << endl;
+		salida << "__________________________" << endl;
+	}
+	
+	salida.close();
+	
+	cout<<"Archivo generado, todo bien";
+	
+	return 0;
 }
